@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import users_router
+from routers import user_router
 from database import engine, Base
 # Registering models before create_all
 import models  # type: ignore
@@ -15,7 +15,7 @@ warnings.filterwarnings(
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title = "SCS Server")
-app.include_router(users_router.router)
+app.include_router(user_router.router)
 
 @app.get("/")
 async def root():
